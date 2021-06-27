@@ -1,0 +1,823 @@
+@import './variable';
+@import './reset';
+
+html, body {
+    font-family: "Noto Sans JP", "游ゴシック体", "Yu Gothic", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", "meiryo", "MS Pゴシック", "MS PGothic", sans-serif;
+}
+a:hover {
+  opacity: .7;
+}
+img {
+  display: block;
+  pointer-events: none;
+}
+h1, h2, h3, h4, h5 {
+  letter-spacing: 1px;
+}
+p {
+  margin: 0;
+  font-size: 16px;
+  color: $color--text;
+}
+
+// ==============================================
+// common parts
+// ==============================================
+/* ----- common parts ----- */
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.container__section2 {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.-top {
+  position: fixed;
+  background: #fff;
+  height: 50px;
+  z-index: 2;
+  max-width: initial;
+}
+
+.fadeIn--btt {
+  opacity: 0;
+  transform: translateY(10px);
+  transition-duration: .4s;
+  -webkit-transition-duration: .4s;
+  transition-timing-function: linear;
+  -webkit-transition-timing-function: linear;
+  &.active {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+.section {
+
+  &__title {
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    position: relative;
+    text-align: center;
+    filter: drop-shadow(1px 3px 5px rgba(0, 0, 0, 0.2));
+
+    &:before {
+      content: '';
+      @include absolute(80px, 2px, initial, initial, 0, 50%, $color--main, translateX(-50%), initial);
+    }
+    span {
+      // font-size: 14px;
+    }
+    h2 {
+      // font-size: 28px;
+      margin-top: 20px;
+      text-transform: uppercase;
+    }
+  }
+
+  &__btn {
+    margin-top: 50px;
+    text-align: center;
+  }
+
+}
+
+.btn {
+  padding: 20px 30px 20px 40px;
+  border-radius: 50px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, .2);
+  display: inline-flex;
+  box-sizing: border-box;
+  align-items: center;
+
+  span {
+    font-size: 20px;
+  }
+  img {
+    margin-left: 30px;
+    width: 20px;
+    height: 100%;
+  }
+
+  .top {
+
+    &__btn {
+      margin-left: 10px;
+    }
+  }
+
+}
+
+.filled--btn {
+  border: 2px solid $color--accent;
+  background: $color--accent;
+
+  span {
+    color: $color--white;
+  }
+
+  .icon_color {
+    display: none;
+  }
+
+  &:hover {
+    opacity: 1;
+    background: $color--white;
+    span {
+      color: $color--accent;
+    }
+    .icon_color {
+      display: block;
+    }
+    .icon_white {
+      display: none;
+    }
+  }
+
+}
+.outline--btn {
+  border: 2px solid $color--accent;
+  background: $color--white;
+
+  span {
+    color: $color--accent;
+  }
+
+  .icon_white {
+    display: none;
+  }
+
+  &:hover {
+    opacity: 1;
+    background: $color--accent;
+    span {
+      color: $color--white;
+    }
+    .icon_white {
+      display: block;
+    }
+    .icon_color {
+      display: none;
+    }
+  }
+
+}
+
+// ==============================================
+// pageLoader
+// ==============================================
+
+/* ----- pageLoader ----- */
+.pageLoader {
+  // display: none;
+  @include absolute(initial, initial, 0, 0, 0, 0, $color--base, initial, 999);
+    position: fixed;
+
+    &__inner {
+      @include absolute(initial, initial, 0, 0, 0, 0, initial, initial, initial);
+      @include flex(center, center, initial);
+    }
+
+    &__logo {
+
+      span {
+        color: $color--black;
+        font-size: 40px;
+      }
+
+      img {
+        width: 140px;
+        height: auto;
+      }
+    }
+
+}
+
+// ローディングアイコンのcssを下記にコピペ
+.sk-cube-grid {
+  width: 40px;
+  height: 40px;
+  margin: 0px auto 30px;
+}
+.sk-cube-grid .sk-cube {
+  width: 33%;
+  height: 33%;
+  background-color: $color--main;
+  float: left;
+  -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+  animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+}
+.sk-cube-grid .sk-cube1 {
+    -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s; }
+  .sk-cube-grid .sk-cube2 {
+    -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s; }
+  .sk-cube-grid .sk-cube3 {
+    -webkit-animation-delay: 0.4s;
+            animation-delay: 0.4s; }
+  .sk-cube-grid .sk-cube4 {
+    -webkit-animation-delay: 0.1s;
+            animation-delay: 0.1s; }
+  .sk-cube-grid .sk-cube5 {
+    -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s; }
+  .sk-cube-grid .sk-cube6 {
+    -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s; }
+  .sk-cube-grid .sk-cube7 {
+    -webkit-animation-delay: 0s;
+            animation-delay: 0s; }
+  .sk-cube-grid .sk-cube8 {
+    -webkit-animation-delay: 0.1s;
+            animation-delay: 0.1s; }
+  .sk-cube-grid .sk-cube9 {
+    -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s; }
+  @-webkit-keyframes sk-cubeGridScaleDelay {
+      0%, 70%, 100% {
+        -webkit-transform: scale3D(1, 1, 1);
+                transform: scale3D(1, 1, 1);
+      } 35% {
+        -webkit-transform: scale3D(0, 0, 1);
+                transform: scale3D(0, 0, 1);
+      }
+    }
+  @keyframes sk-cubeGridScaleDelay {
+      0%, 70%, 100% {
+        -webkit-transform: scale3D(1, 1, 1);
+                transform: scale3D(1, 1, 1);
+      } 35% {
+        -webkit-transform: scale3D(0, 0, 1);
+                transform: scale3D(0, 0, 1);
+      }
+  }
+// ローディングアイコンのcssはここまで
+
+
+// ==============================================
+// header
+// ==============================================
+
+/* ----- header ----- */
+.header {
+  // padding: 20px 0;
+  @include absolute(100%, initial, 0, 0, initial, initial, initial, initial, 998);
+
+  .container {
+    @include flex(center, center, initial);
+    padding: 30px 0;
+  }
+
+  &__left {
+    a {
+      span {
+        color: $color--black;
+        font-size: 50px;
+      }
+      img {
+        width: 120px;
+        height: auto;
+      }
+    }
+  }
+
+  &__right {
+    margin-left: auto;
+
+    nav ul {
+      display: flex;
+      align-items: center;
+      li {
+        text-align: center;
+        a {
+          // padding: 0 10px;
+          color: $color--white;
+          @include flex(center,center,wrap);
+          transition: all .2s;
+          span {
+            width: 100%;
+            display: block;
+          }
+        }
+      }
+    }
+
+  }
+
+  &__contact__btn {
+    margin-left: 10px;
+    a {
+      padding: 12px 30px !important;
+      font-size: 18px;
+      text-transform: uppercase;
+      background: $color--main !important;
+      border: 2px solid $color--main;
+      &:hover {
+        background: $color--white !important;
+        color: $color--main;
+        opacity: 1;
+      }
+    }
+  }
+
+}
+.menu--en {
+  margin-bottom: 5px;
+  font-size: 18px;
+  color: $color--white;
+  text-transform: uppercase;
+  color: $color--black;
+}
+.menu--ja {
+  font-size: 12px;
+  color: $color--white;
+  text-transform: uppercase;
+  color: $color--black;
+}
+
+// ==============================================
+// footer
+// ==============================================
+
+/* ----- footer ----- */
+.footer {
+  padding: 30px 0 20px;
+  background: $color--text;
+
+  &__link {
+    margin-bottom: 30px;
+
+    nav ul {
+      @include flex(center, center, initial);
+      li {
+        a {
+          padding: 0px 20px;
+          color: $color--white;
+          text-transform: uppercase;
+        }
+      }
+    }
+
+  }
+
+  &__copyright {
+    position: relative;
+    p {
+      margin-top: 20px;
+      text-align: center;
+      color: $color--white;
+      font-size: 12px;
+    }
+  }
+
+  &__logo {
+    text-align: center;
+    span {
+      color: $color--white;
+      font-size: 56px;
+    }
+    img {
+      margin: 0 auto;
+      width: 100px;
+      height: auto;
+    }
+  }
+
+  &__top__btn {
+    @include absolute(50px, 50px, initial, 0, 0, initial, $color--black, initial, 1);
+    @include flex(center, center, initial);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all .3s;
+    &:hover {
+      opacity: .7;
+    }
+    img {
+      width: 30px;
+      height: auto;
+    }
+  }
+
+}
+
+// ==============================================
+// spMenu
+// ==============================================
+
+/* ----- spMenu ----- */
+.spMenu {
+  display: none;
+  // display: block;
+  @include absolute(60px, 60px, 0, 0, initial, initial, initial, initial, 998);
+  position: fixed;
+  box-sizing: border-box;
+  transition: all .3s;
+
+  &.active {
+    .spMenu__bar {
+      background: $color--white;
+    }
+    .spMenu__text {
+      span {
+        color: $color--main;
+      }
+    }
+  }
+
+  &__bar {
+    width: 100%;
+    height: 100%;
+    background: $color--main;
+    @include flex(center, center, initial);
+    cursor: pointer;
+    z-index: 1000;
+  }
+
+  &__trigger,
+  &__trigger span {
+    display: inline-block;
+    transition: all .4s;
+    box-sizing: border-box;
+  }
+
+  &__trigger {
+    box-sizing: border-box;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .2s;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    & > span {
+      width: 35px;
+      text-align: center;
+    }
+
+  }
+
+  &__hamburger {
+    margin-top: 2px;
+    width: 35px;
+    height: 22px;
+    position: relative;
+
+    &.active {
+      span {
+        &:nth-of-type(1) {
+          -webkit-transform: translateY(12px) rotate(-45deg);
+          transform: translateY(11px) rotate(-45deg);
+          background: $color--main;
+        }
+        &:nth-of-type(2) {
+          opacity: 0;
+        }
+        &:nth-of-type(3) {
+          -webkit-transform: translateY(-9px) rotate(45deg);
+          transform: translateY(-9px) rotate(45deg);
+          background: $color--main;
+        }
+      }
+    }
+
+    span {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: $color--white;
+      &:nth-of-type(2) {
+        top: 10px;
+      }
+      &:nth-of-type(3) {
+        bottom: 0;
+      }
+    }
+
+  }
+
+  &__text {
+    span {
+      // text-transform: uppercase;
+      color: $color--white;
+      font-size: 12px;
+    }
+  }
+
+}
+
+// ==============================================
+// pageMain
+// ==============================================
+
+/* ----- pageMain ----- */
+.int__wrapper {
+  background-image: url(../assets/images/img/bg.jpg);
+  background-color: rgba(255, 255, 255, 0.6);
+  background-blend-mode: lighten;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.-int {
+  text-align: center;
+  -webkit-filter:drop-shadow(1px 3px 5px rgba(0, 0, 0, 0.2));
+  -moz-filter:drop-shadow(1px 3px 5px rgba(0, 0, 0, 0.2));
+  -ms-filter:drop-shadow(1px 3px 5px rgba(0, 0, 0, 0.2));
+  filter:drop-shadow(1px 3px 5px rgba(0, 0, 0, 0.2));
+}
+
+.section-top {
+
+  &__title {
+    font-size: 36px;
+    line-height: 1.5;
+    span {
+      font-size: 60px;
+      border-bottom: 5px solid;
+      border-color: red;
+    }
+  }
+
+  &__text {
+    margin-top: 50px;
+    line-height: 1.5;
+  }
+
+}
+
+.section1 {
+  padding-bottom: 40px !important;
+}
+
+.section {
+
+  &__sub {
+    margin-bottom: 48px;
+
+    h3 {
+      font-size: 16px;
+      line-height: 1.2;
+      color: $color--text;
+    }
+  }
+
+}
+
+.advantage {
+
+  &-list {
+    counter-reset: advantage-counter;
+    // 「n番目」という概念自体がリストに依存するので、あえて「.advantage-listの子要素の.advantage-block__title:before」という形で記述する
+
+    &__item:not(:last-child) {
+      margin-bottom: 50px;
+    }
+
+    .advantage {
+
+      &-block {
+
+        &__title {
+
+          &:before {
+            counter-increment: advantage-counter;
+            content: counter(advantage-counter) ". ";
+          }
+        }
+      }
+    }
+
+  }
+
+}
+
+.advantage {
+
+  &-block {
+    display: flex;
+    align-items: center;
+
+    &__image {
+      margin-right: 40px;
+
+      img {
+        width: 200px;
+        height: auto;
+      }
+
+      .wordpress {
+        width: 150px;
+        height: auto;
+        margin-left: 25px;
+        margin-right: 25px;
+      }
+    }
+
+    &__inner {
+      flex: 1;
+    }
+
+    &__title {
+      margin-bottom: 20px;
+      font-size: 24px;
+      line-height: 1.5;
+      border-bottom: 2px solid $color--main;
+      -moz-filter:drop-shadow(1px 3px 5px rgba(0, 0, 0, 0.2));
+      -ms-filter:drop-shadow(1px 3px 5px rgba(0, 0, 0, 0.2));
+      filter: drop-shadow(1px 3px 5px rgba(0, 0, 0, 0.2));
+    }
+
+    &__text {
+      line-height: 2;
+      text-align: left;
+    }
+  }
+
+}
+
+.c-row {
+  display: flex;
+}
+
+.smb-pricing-table {
+
+  &__item {
+    padding: 10px;
+
+    ul {
+      margin-top: 0.88462rem;
+      border-top: 1px solid $color--base;
+
+      > li {
+        border-bottom: 1px solid $color--base;
+        padding-top: 0.88462rem;
+        padding-bottom: 0.88462rem;
+      }
+    }
+
+    &__price {
+      font-size: 20px;
+      line-height: 1.61538;
+    }
+
+    &__figure {
+      margin-bottom: 0.88462rem;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    &__lede {
+      color: #999;
+      font-size: 14px;
+      line-height: 1.80769;
+    }
+  }
+
+  .c-row {
+
+    &__col {
+
+      &:not(:first-child) {
+        border-top: 1px solid $color--base;
+      }
+    }
+  }
+
+}
+.smb-pricing-table__item__price, .smb-pricing-table__item__title {
+  font-weight: 700;
+  text-align: center;
+}
+
+.wp-block-snow-monkey {
+
+  &-blocks-pricing {
+
+    &-table--item {
+      width: 33.3333%;
+      margin: 10px;
+      border: 1px solid #dee2e6 !important;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+      border-radius: 0.25rem !important;
+
+      li {
+        line-height: 1.75;
+      }
+    }
+  }
+
+}
+
+.work {
+  padding: 10px 0 0 0;
+
+  &__item {
+    background: $color--white;
+    box-shadow: 0 0 35px 0 rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+  }
+
+  &__text {
+    padding: 20px;
+
+    h3 {
+      font-size: 30px;
+      color: $color--black;
+    }
+    p {
+      margin-top: 20px;
+    }
+  }
+
+}
+
+.portfolio {
+
+  img {
+    width: 100%;
+  }
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+/* ----- flow ----- */
+table.workflow_table {
+  border-bottom: 1px solid #c8c8c8;
+}
+
+.entry-content > table.workflow_table:last-child,
+.entry-content > :last-child > table.workflow_table:last-child,
+.entry-content > :last-child > :last-child > table.workflow_table:last-child {
+  margin-bottom: 100px;
+}
+
+table {
+
+  &.workflow {
+
+    &_table {
+
+      tr {
+        border-top: 1px solid #c8c8c8;
+
+        th {
+          width: 20%;
+          padding: 18px 0 17px;
+          line-height: 0;
+          text-align: center;
+
+          img {
+            width: 100%;
+          }
+        }
+
+        td {
+          padding: 18px 0 17px 1em;
+          line-height: 1.5;
+          .headings {
+            color: #646464;
+            font-size: 24px;
+            font-weight: bold;
+            padding-bottom: 10px;
+          }
+
+          p {
+            margin-bottom: 0;
+            text-align: left;
+            line-height: 1.75;
+          }
+        }
+      }
+
+    }
+
+  }
+
+}
+
+table.workflow_table tr th,
+table.workflow_table tr td {
+  vertical-align: middle;
+}
